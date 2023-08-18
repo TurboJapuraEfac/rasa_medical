@@ -1,0 +1,18 @@
+[
+  {
+    "text": "hi",
+    "intent": "lower_limb_hip",
+    "intent_prediction": {
+      "name": "greet",
+      "confidence": 0.4169843792915344
+    }
+  },
+  {
+    "text": "shoulder joint",
+    "intent": "shoulder_related_pains_instability",
+    "intent_prediction": {
+      "name": "upper_limb_shoulder",
+      "confidence": 0.41620832681655884
+    }
+  }
+]

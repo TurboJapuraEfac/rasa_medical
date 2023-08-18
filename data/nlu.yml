@@ -1,0 +1,336 @@
+version: "3.1"
+
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+
+- intent: goodbye
+  examples: |
+    - good bye
+    - bye
+    - see you
+    - good night
+    - goodbye
+    - have a nice day
+    - exit
+
+- intent: affirm
+  examples: |
+    - yes
+    - ok
+    - okay
+    - indeed
+    - of course
+    - yaa
+    - yeah
+    - yess
+    - correct
+    - sure
+    - right
+    - definitely
+
+- intent: deny
+  examples: |
+    - no
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+    - nope
+
+- intent: select_upper_limb
+  examples: |
+    - upper
+    - upper limb
+
+- intent: select_lower_limb
+  examples: |
+    - lower
+    - lower limb
+
+- intent: upper_limb_shoulder
+  examples: |
+    - shoulder joint
+    - s
+    - shoulder
+    - sho
+
+- intent: upper_limb_elbow
+  examples: |
+    - e
+    - elbow joint
+    - elbow
+    - elb
+    - elbo
+    - el
+
+- intent: upper_limb_wrist
+  examples: |
+    - wrist joint
+    - wr
+    - wrist
+    - wri
+    - wris
+
+- intent: lower_limb_hip
+  examples: |
+    - hip joint
+    - h
+    - hip
+    - hi
+
+- intent: lower_limb_knee
+  examples: |
+    - knee joint
+    - k
+    - knee
+    - kn 
+    - kne
+
+- intent: lower_limb_ankle
+  examples: |
+    - ankle joint
+    - a
+    - ankle
+    - an
+    - ank
+    - ank
+
+- intent: elbow_related_pains_lateral
+  examples: |
+    - lateral epicondylitis 
+    - l
+    - lateral
+    - Pain in the lateral epicondyle
+    - Lateral epicondyle tendinopathy
+    - Inflammation of the lateral elbow
+    - Elbow lateral epicondylitis
+
+- intent: elbow_related_pains_medial
+  examples: |
+    - medial epicondylitis
+    - med
+    - medi
+    - medial
+    - Pain in the medial epicondyle
+    - Medial epicondyle tendinopathy
+    - Inflammation of the medial elbow
+    - Elbow medial epicondylitis
+
+- intent: wrist_related_pains_dequervain
+  examples: |
+    - dequervain tenosynovitis
+    - deq
+    - dequervain
+    - De Quervain's syndrome
+    - Wrist pain and limited movement from De Quervain's
+    - deque
+
+- intent: wrist_related_pains_carpel
+  examples: |
+    - carpel tunnel  syndrome
+    - car
+    - carpel
+    - Wrist carpal tunnel syndrome
+    - Carpal tunnel entrapment
+    - Carpal tunnel release surgery
+
+- intent: wrist_related_pains_mcp
+  examples: |
+    - mcp arthritis
+    - mcp
+    - Pain and swelling in the MCP joints
+    - MCP joint pain and limited movement
+    - Joint inflammation causing MCP discomfort
+    - Rheumatoid arthritis affecting the MCP joints
+    - MCP joint stiffness and pain
+    - MCP joint osteoarthritis
+    - Painful MCP joints due to arthritis
+
+- intent: shoulder_related_pains_instability
+  examples: |
+    - shoulder instability 
+    - shoulder ins
+    - shou ins
+    - instability in the shoulder joint
+    - shoulder joint 
+    - shoulder instability symptoms
+
+- intent: shoulder_related_pains_capsulitis
+  examples: |
+    - adhesive capsulitis 
+    - adhesive cap
+    - Shoulder adhesive capsulitis
+    - Capsulitis of the shoulder
+    - Shoulder capsule inflammation
+    - Capsule-related shoulder discomfort
+    - adhesive inflammation
+
+- intent: shoulder_related_pains_arthritis
+  examples: |
+    - shoulder arthritis 
+    - shoulder arth
+    - Glenohumeral arthritis
+    - Arthritis-related shoulder pain
+    - Arthritic shoulder discomfort
+
+- intent: shoulder_related_pains_impingement
+  examples: |
+    - shoulder impingement 
+    - shoulder imp
+    - impingement syndrome of the shoulder
+    - Shoulder impingement syndrome
+    - Shoulder impingement pain
+    - Impinged shoulder joint
+
+- intent: shoulder_related_pains_cuff_tendonitis
+  examples: |
+    - rotator cuff tendonitis
+    - rotator cuff
+    - Rotator cuff tendonitis
+    - Shoulder tendonitis
+    - Tendonitis-related shoulder pain
+
+- intent: hip_related_pains_hip_arthritis
+  examples: |
+    - hip arthritis
+    - arthritis in the hip
+    - osteoarthritis of the hip
+    - rheumatoid arthritis in the hip
+
+- intent: hip_related_pains_iliopsoas_tendonitis
+  examples: |
+    - iliopsoas tendonitis
+    - tendonitis in the hip
+    - inflammation of the iliopsoas tendon
+    - hip flexor tendonitis
+
+- intent: hip_related_pains_greater_trochanteric_pain
+  examples: |
+    - greater trochanteric pain
+    - trochanteric bursitis
+    - hip bursitis
+    - trochanteric
+    - troch
+    - troachan
+
+- intent: hip_related_pains_hamstring_strain
+  examples: |
+    - hamstring strain
+    - strained hamstring
+    - pulled hamstring
+    - hamstring muscle tear
+
+- intent: hip_related_pains_adductor_strain
+  examples: |
+    - adductor strain
+    - groin strain
+    - strained adductor muscles
+    - adductor muscle tear
+
+- intent: knee_related_pains_knee_arthritis
+  examples: | 
+    - knee arthritis
+    - arthritis in the knee
+    - osteoarthritis of the knee
+    - rheumatoid arthritis in the knee
+
+- intent: knee_related_pains_patellofemoral_syndrome
+  examples: |
+    - patellofemoral syndrome
+    - anterior knee pain syndrome
+    - patel
+    - patello
+    - pate
+    - pat
+    - patellar tracking disorder
+
+- intent: knee_related_pains_patellar_tendonitis
+  examples: |
+    - patellar tendonitis
+    - jumper's knee
+    - tendonitis in the knee
+    - inflammation of the patellar tendon
+
+- intent: knee_related_pains_knee_ligament
+  examples: |
+    - inee ligament injury
+    - ligament tear in the knee
+    - sprained knee ligament
+    - medial collateral ligament (MCL) injury
+
+- intent: knee_related_pains_meniscus_tear
+  examples: |
+    - meniscus tear
+    - torn meniscus
+    - meniscal injury
+    - knee cartilage tear
+
+- intent: knee_related_pains_iliotibial_band_syndrome
+  examples: |
+    - iliotibial band syndrome
+    - iT band syndrome
+    - illio
+    - illiotib
+    - illi
+    - illiotibial
+    - pain on the outside of the knee
+
+- intent: ankle_related_pains_lateral_ankle_pain
+  examples: |
+    - lateral ankle pain
+    - pain on the outside of the ankle
+    - sprained ankle
+    - ankle ligament injury   
+
+- intent: ankle_related_pains_ankle_instability
+  examples: |
+    - ankle instability
+    - unstable ankle
+    - chronic ankle sprain
+    - weak ankles
+
+- intent: ankle_related_pains_achilles_tendon_pain
+  examples: |
+    - achilles tendon pain
+    - achilles tendinitis
+    - tendon pain in the ankle
+    - inflammation of the Achilles tendon
+
+- intent: ankle_related_pains_posterior_tibial_tendonitis
+  examples: |
+    - posterior tibial tendonitis
+    - tendonitis in the ankle
+    - inflammation of the posterior tibial tendon
+    - pain along the inside of the ankle
+
+- intent: ankle_related_pains_plantar_fasciitis
+  examples: |
+    - plantar fasciitis
+    - heel pain
+    - pain in the arch of the foot
+    - inflammation of the plantar fascia
+
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+  
+
+
+

@@ -1,0 +1,339 @@
+version: "3.1"
+
+stories:
+
+- story: user greet
+  steps:
+  - intent: greet
+  - action: utter_greet
+
+- story: user bye
+  steps:
+  - action: utter_goodbye
+
+  # --------------------------------------------------------------------------------#
+
+- story: upperlimb_shoulder_instability pain 
+  steps:
+  - intent: select_upper_limb
+  - action: utter_upper_limb
+  - intent: upper_limb_shoulder
+  - action: utter_shoulder_related_pains
+  - intent: shoulder_related_pains_instability
+  - action: utter_shoulder_instability_types
+  - intent: affirm
+  - action: utter_shoulder_instability_types_ans
+  - action: utter_did_that_help
+    
+- story: upperlimb_shoulder_capsulitis pain 
+  steps:
+  - intent: select_upper_limb
+  - action: utter_upper_limb
+  - intent: upper_limb_shoulder
+  - action: utter_shoulder_related_pains
+  - intent: shoulder_related_pains_capsulitis
+  - action: utter_shoulder_adhesive_capsulitis_types
+  - intent: affirm
+  - action: utter_shoulder_adhesive_capsulitis_types_ans
+  - action: utter_did_that_help
+    
+- story: upperlimb_shoulder_arthritis pain 
+  steps:
+  - intent: select_upper_limb
+  - action: utter_upper_limb
+  - intent: upper_limb_shoulder
+  - action: utter_shoulder_related_pains
+  - intent: shoulder_related_pains_arthritis
+  - action: utter_shoulder_arthritis_types
+  - intent: affirm
+  - action: utter_shoulder_arthritis_types_ans
+  - action: utter_did_that_help
+    
+- story: upperlimb_shoulder_impingement pain 
+  steps:
+  - intent: select_upper_limb
+  - action: utter_upper_limb
+  - intent: upper_limb_shoulder
+  - action: utter_shoulder_related_pains
+  - intent: shoulder_related_pains_impingement
+  - action: utter_shoulder_impingement_types
+  - intent: affirm
+  - action: utter_shoulder_impingement_types_ans
+  - action: utter_did_that_help
+
+- story: upperlimb_shoulder_tendonitis pain 
+  steps:
+  - intent: select_upper_limb
+  - action: utter_upper_limb
+  - intent: upper_limb_shoulder
+  - action: utter_shoulder_related_pains
+  - intent: shoulder_related_pains_cuff_tendonitis
+  - action: utter_shoulder_rotator_cufftendonitis_types
+  - intent: affirm
+  - action: utter_shoulder_rotator_cufftendonitis_types_ans
+  - action: utter_did_that_help
+
+  # --------------------------------------------------------------------------------#
+
+- story: upperlimb_elbow_lateral_epicondylitis pain 
+  steps:
+  - intent: select_upper_limb
+  - action: utter_upper_limb
+  - intent: upper_limb_elbow
+  - action: utter_elbow_related_pains
+  - intent: elbow_related_pains_lateral
+  - action: utter_elbow_lateral_epicondylitis_types
+  - intent: affirm
+  - action: utter_elbow_lateral_epicondylitis_types_ans
+  - action: utter_did_that_help
+
+- story: upperlimb_elbow_medial_epicondyliti pain 
+  steps:
+  - intent: select_upper_limb
+  - action: utter_upper_limb
+  - intent: upper_limb_elbow
+  - action: utter_elbow_related_pains
+  - intent: elbow_related_pains_medial
+  - action: utter_elbow_medial_epicondyliti_types
+  - intent: affirm
+  - action: utter_elbow_medial_epicondyliti_types_ans
+  - action: utter_did_that_help
+
+  # --------------------------------------------------------------------------------#
+
+- story: upperlimb_wrist_dequervain pain 
+  steps:
+  - intent: select_upper_limb
+  - action: utter_upper_limb
+  - intent: upper_limb_wrist
+  - action: utter_wrist_related_pains
+  - intent: wrist_related_pains_dequervain
+  - action: utter_wrist_dequervain_tenosynovitis_types
+  - intent: affirm
+  - action: utter_wrist_dequervain_tenosynovitis_types_ans
+  - action: utter_did_that_help
+
+- story: upperlimb_wrist_carpel pain 
+  steps:
+  - intent: select_upper_limb
+  - action: utter_upper_limb
+  - intent: upper_limb_wrist
+  - action: utter_wrist_related_pains
+  - intent: wrist_related_pains_carpel
+  - action: utter_wrist_carpel_tunnel_types
+  - intent: affirm
+  - action: utter_wrist_carpel_tunnel_types_ans
+  - action: utter_did_that_help
+
+- story: upperlimb_wrist_mcp pain 
+  steps:
+  - intent: select_upper_limb
+  - action: utter_upper_limb
+  - intent: upper_limb_wrist
+  - action: utter_wrist_related_pains
+  - intent: wrist_related_pains_mcp
+  - action: utter_wrist_mcp_arthritis_types
+  - intent: affirm
+  - action: utter_wrist_mcp_arthritis_types_ans
+  - action: utter_did_that_help
+
+  # --------------------------------------------------------------------------------#
+
+- story: lowerlimb_hip_hip_arthritis pain 
+  steps:
+  - intent: select_lower_limb
+  - action: utter_lower_limb
+  - intent: lower_limb_hip
+  - action: utter_hip_related_pains
+  - intent: hip_related_pains_hip_arthritis
+  - action: utter_hip_arthuritis_types
+  - intent: affirm
+  - action: utter_hip_arthuritis_types_ans
+  - action: utter_did_that_help
+
+- story: lowerlimb_hip_ilioposal_tendonitis pain 
+  steps:
+  - intent: select_lower_limb
+  - action: utter_lower_limb
+  - intent: lower_limb_hip
+  - action: utter_hip_related_pains
+  - intent: hip_related_pains_iliopsoas_tendonitis
+  - action: utter_ilioposal_tendonitis_types
+  - intent: affirm
+  - action: utter_ilioposal_tendonitis_types_ans
+  - action: utter_did_that_help
+
+- story: lowerlimb_hip_greater_trochantic_pain pain 
+  steps:
+  - intent: select_lower_limb
+  - action: utter_lower_limb
+  - intent: lower_limb_hip
+  - action: utter_hip_related_pains
+  - intent: hip_related_pains_greater_trochanteric_pain
+  - action: utter_greater_trochantic_pain_types
+  - intent: affirm
+  - action: utter_greater_trochantic_pain_types_ans
+  - action: utter_did_that_help
+
+- story: lowerlimb_hip_hamstring_strain pain 
+  steps:
+  - intent: select_lower_limb
+  - action: utter_lower_limb
+  - intent: lower_limb_hip
+  - action: utter_hip_related_pains
+  - intent: hip_related_pains_hamstring_strain
+  - action: utter_hamstring_strain_types
+  - intent: affirm
+  - action: utter_hamstring_strain_types_ans
+  - action: utter_did_that_help
+
+- story: lowerlimb_hip_adductor_strain pain 
+  steps:
+  - intent: select_lower_limb
+  - action: utter_lower_limb
+  - intent: lower_limb_hip
+  - action: utter_hip_related_pains
+  - intent: hip_related_pains_adductor_strain
+  - action: utter_adductor_strain_types
+  - intent: affirm
+  - action: utter_adductor_strain_types_ans
+  - action: utter_did_that_help
+
+ # --------------------------------------------------------------------------------#  
+
+- story: lowerlimb_knee_arthritis pain 
+  steps:
+  - intent: select_lower_limb
+  - action: utter_lower_limb
+  - intent: lower_limb_knee
+  - action: utter_knee_related_pains
+  - intent: knee_related_pains_knee_arthritis
+  - action: utter_knee_arthritis_types
+  - intent: affirm
+  - action: utter_knee_arthritis_types_ans
+  - action: utter_did_that_help
+
+- story: lowerlimb_knee_patellofemoral_syndrome pain 
+  steps:
+  - intent: select_lower_limb
+  - action: utter_lower_limb
+  - intent: lower_limb_knee
+  - action: utter_knee_related_pains
+  - intent: knee_related_pains_patellofemoral_syndrome
+  - action: utter_patellofemoral_syndrome_types
+  - intent: affirm
+  - action: utter_patellofemoral_syndrome_types_ans
+  - action: utter_did_that_help
+
+- story: lowerlimb_knee_patellar_tendonitis pain 
+  steps:
+  - intent: select_lower_limb
+  - action: utter_lower_limb
+  - intent: lower_limb_knee
+  - action: utter_knee_related_pains
+  - intent: knee_related_pains_patellar_tendonitis
+  - action: utter_patellar_tendonitis_types
+  - intent: affirm
+  - action: utter_patellar_tendonitis_types_ans
+  - action: utter_did_that_help
+
+- story: lowerlimb_knee_ligament_type pain 
+  steps:
+  - intent: select_lower_limb
+  - action: utter_lower_limb
+  - intent: lower_limb_knee
+  - action: utter_knee_related_pains
+  - intent: knee_related_pains_knee_ligament
+  - action: utter_knee_ligament_types
+  - intent: affirm
+  - action: utter_knee_ligament_types_ans
+  - action: utter_did_that_help
+
+- story: lowerlimb_knee_meniscus_tear pain 
+  steps:
+  - intent: select_lower_limb
+  - action: utter_lower_limb
+  - intent: lower_limb_knee
+  - action: utter_knee_related_pains
+  - intent: knee_related_pains_meniscus_tear
+  - action: utter_meniscus_tear_types
+  - intent: affirm
+  - action: utter_meniscus_tear_types_ans
+  - action: utter_did_that_help
+
+- story: lowerlimb_knee_iliotibial_band_syndrome pain 
+  steps:
+  - intent: select_lower_limb
+  - action: utter_lower_limb
+  - intent: lower_limb_knee
+  - action: utter_knee_related_pains
+  - intent: knee_related_pains_iliotibial_band_syndrome
+  - action: utter_iliotibial_band_syndrome_types
+  - intent: affirm
+  - action: utter_iliotibial_band_syndrome_types_ans
+  - action: utter_did_that_help
+
+
+# --------------------------------------------------------------------------------#  
+
+- story: lowerlimb_ankle_lateral_ankle_pain pain 
+  steps:
+  - intent: select_lower_limb
+  - action: utter_lower_limb
+  - intent: lower_limb_ankle
+  - action: utter_ankle_related_pains
+  - intent: ankle_related_pains_lateral_ankle_pain
+  - action: utter_lateral_ankle_pain_types
+  - intent: affirm
+  - action: utter_lateral_ankle_pain_types_ans
+  - action: utter_did_that_help
+
+- story: lowerlimb_ankle_ankle_instability pain 
+  steps:
+  - intent: select_lower_limb
+  - action: utter_lower_limb
+  - intent: lower_limb_ankle
+  - action: utter_ankle_related_pains
+  - intent: ankle_related_pains_ankle_instability
+  - action: utter_ankle_instability_types
+  - intent: affirm
+  - action: utter_ankle_instability_types_ans
+  - action: utter_did_that_help
+
+- story: lowerlimb_ankle_achilles_tendon_pain pain 
+  steps:
+  - intent: select_lower_limb
+  - action: utter_lower_limb
+  - intent: lower_limb_ankle
+  - action: utter_ankle_related_pains
+  - intent: ankle_related_pains_achilles_tendon_pain
+  - action: utter_achilles_tendon_pain_types
+  - intent: affirm
+  - action: utter_achilles_tendon_pain_types_ans
+  - action: utter_did_that_help
+
+- story: lowerlimb_ankle_tibial_tendonitis pain 
+  steps:
+  - intent: select_lower_limb
+  - action: utter_lower_limb
+  - intent: lower_limb_ankle
+  - action: utter_ankle_related_pains
+  - intent: ankle_related_pains_posterior_tibial_tendonitis
+  - action: utter_posterior_tibial_tendonitis_types
+  - intent: affirm
+  - action: utter_posterior_tibial_tendonitis_types_ans
+  - action: utter_did_that_help
+
+- story: lowerlimb_ankle_plantar_facitis pain 
+  steps:
+  - intent: select_lower_limb
+  - action: utter_lower_limb
+  - intent: lower_limb_ankle
+  - action: utter_ankle_related_pains
+  - intent: ankle_related_pains_plantar_fasciitis
+  - action: utter_plantar_facitis_types
+  - intent: affirm
+  - action: utter_plantar_facitis_types_ans
+  - action: utter_did_that_help
+
+# --------------------------------------------------------------------------------#  

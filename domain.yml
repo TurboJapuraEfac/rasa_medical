@@ -1,0 +1,412 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - bot_challenge
+  - select_upper_limb
+  - select_lower_limb
+  - upper_limb_shoulder
+  - upper_limb_elbow
+  - upper_limb_wrist
+  - lower_limb_hip
+  - lower_limb_knee
+  - lower_limb_ankle
+  - elbow_related_pains_lateral
+  - elbow_related_pains_medial
+  - wrist_related_pains_dequervain
+  - wrist_related_pains_carpel
+  - wrist_related_pains_mcp
+  - shoulder_related_pains_instability
+  - shoulder_related_pains_capsulitis
+  - shoulder_related_pains_arthritis
+  - shoulder_related_pains_impingement
+  - shoulder_related_pains_cuff_tendonitis
+  - hip_related_pains_hip_arthritis
+  - hip_related_pains_iliopsoas_tendonitis
+  - hip_related_pains_greater_trochanteric_pain
+  - hip_related_pains_hamstring_strain
+  - hip_related_pains_adductor_strain
+  - knee_related_pains_knee_arthritis
+  - knee_related_pains_patellofemoral_syndrome
+  - knee_related_pains_patellar_tendonitis
+  - knee_related_pains_knee_ligament
+  - knee_related_pains_meniscus_tear
+  - knee_related_pains_iliotibial_band_syndrome
+  - ankle_related_pains_lateral_ankle_pain
+  - ankle_related_pains_ankle_instability
+  - ankle_related_pains_achilles_tendon_pain
+  - ankle_related_pains_posterior_tibial_tendonitis
+  - ankle_related_pains_plantar_fasciitis
+
+responses:
+  utter_greet:
+  - text: " Hi! How may I help you? Are you facing any of these problems: Upper Limb | Lower Limb"
+  utter_did_that_help:
+  - text: " I hope that this helps you.\n\ If you wish to continue please select which problem: Upper Limb | Lower Limb.\n\ Else you can exit"
+  utter_happy:
+  - text: " Great, carry on!"
+  utter_goodbye:
+  - text: " \n\ Bye"
+  utter_upper_limb:
+  - text: " \n\ Select the pain area : Shoulder joint | Elbow joint | Wrist joint"
+  utter_lower_limb:
+  - text: " \n\ Select the pain area : Hip joint | Knee joint | Ankle joint"
+
+  utter_shoulder_related_pains:
+  - text: " \n\ Select the symptom : Shoulder instability | Adhesive capsulitis | Shoulder Arthritis | Shoulder impingement | Rotator cuff tendonitis"
+  utter_elbow_related_pains:
+  - text: " \n\ Select the symptom : Lateral epicondylitis | Medial epicondyliti"
+  utter_wrist_related_pains:
+  - text: " \n\ Select the symptom : Dequervain tenosynovitis | Carpel tunnel syndrome | MCP Arthritis"
+  utter_hip_related_pains:
+  - text: " \n\ Select the symptom : Hip arthuritis | Ilioposal tendonitis | Greater trochantic  pain | Hamstring strain | Adductor strain"
+  utter_knee_related_pains:
+  - text: " \n\ Select the symptom : Knee arthuritis | Patellofemoral syndrome | Patellar tendonitis | Knee ligament | Menicus tear | Iliotibial band syndrome"
+  utter_ankle_related_pains:
+  - text: " \n\ Select the symptom : Lateral ankle pain | Ankle instability | Achilles tendon pain | Posterior tibial tendonitis | Planter facili"
+  
+  utter_shoulder_instability_types:
+  - text: " \n\ These might be possible causes shoulder_instability 
+  \n\ 1.Fallen in outstretched hand. 
+  \n\ 2.Direct blow to shoulder joint. 
+  \n\ 3.Direct blow to shoulder joint 
+  \n\ Are you facing any of the following issues: 
+  \n\ Did the hand hit somewhere hard? Did you fall with your arms outstretched? 
+  \n\ Does your arm feel like it's going to jump?? 
+  \n\ Yes | No"
+  utter_shoulder_adhesive_capsulitis_types:
+  - text: " \n\ These might be possible causes adhesive_capsulitis 
+  \n\ 1.Pain persist few month. 
+  \n\ 2.Painful limitations of all shoulder movement. 
+  \n\ 3.Pain and movement  limitations  happened gradually 
+  \n\ Are you facing any of the following issues: 
+  \n\ Has the pain lasted for several months? 
+  \n\ Can't move your hand in any direction because your hand is tight?? 
+  \n\ Yes | No"
+  utter_shoulder_arthritis_types:
+  - text: " \n\ These might be possible causes shoulder_arthritis 
+  \n\ 1.Pain occur even in night. 
+  \n\ 2.Same like adeshive  capsulitis 
+  \n\ 3.Pain in rest 
+  \n\ Are you facing any of the following issues: 
+  \n\ Do you still have arm pain?  
+  \n\ Is there pain even when you keep your hand on the rest? Yes | No"
+  utter_shoulder_impingement_types:
+  - text: " \n\ These might be possible causes shoulder_impingement 
+  \n\ 1.Pain come from behind the shoulder. 
+  \n\ 2.More pain in night. 
+  \n\ 3.Pain in overhead activities 
+  \n\ Are you facing any of the following issues: 
+  \n\ I feel pain in the back of the hand, the pain in the hand is more at night 
+  \n\ The pain in the hand is more when working with the shoulder raised ?? 
+  \n\ Yes | No"
+  utter_shoulder_rotator_cufftendonitis_types:
+  - text: " \n\ These might be possible causes rotator_cufftendonitis 
+  \n\ 1.Pain with over head activities. 
+  \n\ 2.Pain come from outer side of shoulder. 
+  \n\ Are you facing any of the following issues: 
+  \n\ Pain and swelling in the shoulder area 
+  \n\ Limited motion or weakness of the arm  
+  \n\ Pain at rest and at night, particularly if lying on the affected shoulder.
+  \n\ Pain when lifting and lowering your arm or with specific movements
+  \n\ Weakness when lifting or rotating your arm 
+  \n\ Yes | No"
+  
+  utter_shoulder_instability_types_ans:
+  - text: " \n\ 1.Multiplane shoulder  exercise -rhythmic stablizing 
+  \n\ 2.Isometrics  shoulder abduction 
+  \n\ 3.Isometrics  shoulder external rotation 
+  \n\ 4.Scapular  stablizing exercise"
+  utter_shoulder_adhesive_capsulitis_types_ans:
+  - text: " \n\ 1.Pendulum exercise 
+  \n\ 2.Assisted shoulder flexion 
+  \n\ 3.Assisted shoulder abduction 
+  \n\ 4.Shoulder flexionwith rope 
+  \n\ 5.Shoulder abduction with rope 
+  \n\ 6.Capsule streching"
+  utter_shoulder_arthritis_types_ans:
+  - text: " \n\ 1.Shoulder flexion with rope 
+  \n\ 2.Shoulder abduction with rope 
+  \n\ 3.Standing shoulder press 
+  \n\ 4.Scapular exercise-prone T exercise"
+  utter_shoulder_impingement_types_ans:
+  - text: " \n\ 1.Pendulum exercise 
+  \n\ 2.Pec muscle streching 
+  \n\ 3.Shoulder across adduction 
+  \n\ 4.Resisted shoulder abduction 
+  \n\ 5.Resisted shoulder external rotation 
+  \n\ 6.Resisted shoulder external rotation"
+  utter_shoulder_rotator_cufftendonitis_types_ans:
+  - text: " \n\ 1.Isometrics shoulder abduction 
+  \n\ 2.Isometrics shoulder internal rotation 
+  \n\ 3.Isometrics shoulder external rotation 
+  \n\ 4.Shoulder flexion with 1kg weight 
+  \n\ 5.Shoulder external rotation with band 
+  \n\ 6.Shoulder  stablizing exercise Scapular clock ex,low raw ex "
+  
+  utter_elbow_lateral_epicondylitis_types:
+  - text: " \n\ These might be possible causes lateral_epicondylitis 
+  \n\ 1.Pain in outer side of elbow  joint 
+  \n\ 2.Pain in elbow  during  hand activities 
+  \n\ Are you facing any of the following issues: 
+  \n\ Pain on the outside of the elbow                         
+  \n\ 1.Pain can be triggered or worsened by movements involving the wrist, such as extending or flexing it.                                            
+  \n\ 2.The pain from lateral epicondylitis can sometimes radiate down the forearm, affecting the muscles and tendons of the forearm 
+  \n\ Yes | No"
+  utter_elbow_medial_epicondyliti_types:
+  - text: " \n\ These might be possible causes medial_epicondyliti 
+  \n\ 1.Pain in inner side of elbow jont 
+  \n\ Are you facing any of the following issues: 
+  \n\ 1.Pain can be triggered or exacerbated by movements involving wrist flexion or pronation (rotating the forearm to face palm down)         
+  \n\ 2.There may be tenderness and swelling around the bony prominence on the inside of the elbow (medial epicondyle) 
+  \n\ Yes | No"
+  utter_elbow_lateral_epicondylitis_types_ans:
+  - text : " \n\ 1.Wrist extensor muscle streching
+    \n\ 2.Wrist extensor muscle ecentric strength
+    \n\ 3.Wrist supinator strength"
+  utter_elbow_medial_epicondyliti_types_ans:
+  - text: "\n\ 1.Wrist flexors  streching
+    \n\ 2.Wrist flexors  ecentric strength"
+
+  utter_wrist_dequervain_tenosynovitis_types:
+  - text: " \n\ These might be possible causes dequervain_tenosynovitis
+  \n\ 1.Pain in outer side of hand 
+  \n\ 2.Pain increase with activity 
+  \n\ Are you facing any of the following issues: 
+  \n\ Swelling over the thumb side of the wrist.
+  \n\ Yes | No"
+  utter_wrist_dequervain_tenosynovitis_types_ans:
+  - text: " \n\ 1.Wrist strength exercise
+  \n\ 2.Thumb strength exercise
+  \n\ 3.Ulna deviation strength exercise
+  \n\ 4.Wrist flexion strength exercise"
+  utter_wrist_carpel_tunnel_types:
+  - text: " \n\ These might be possible causes carpel_tunnel  
+  \n\ 1.Difficult in fine motor movement
+  \n\ 2.Hand and finger numnesss
+  \n\ 3.Lack of grip strength
+  \n\ Are you facing any of the following issues: 
+  \n\ 1.Numbness or tingling sensation in the thumb, index finger, middle finger, and half of the ring finger                                                                      
+  \n\ 2.Pain or aching sensation in the affected hand and fingers, which may radiate up the forearm or arm. The pain is typically worse at night.      
+  \n\ 3.Generalized discomfort or a feeling of heaviness in the hand and wrist area. 
+  \n\ Yes | No
+          "
+  utter_wrist_carpel_tunnel_types_ans:
+  - text: " \n\ 1.Median nerve glide
+           \n\ 2.Tendon glide"
+  utter_wrist_mcp_arthritis_types:
+  - text: " \n\ These might be possible causes mcp_arthritis 
+  \n\ Pain in thumb movement 
+  \n\ Are you facing any of the following issues: 
+  \n\ 1.Pain in the affected metacarpophalangeal (MCP) joints, which are the joints at the base of the fingers where they meet the hand.              
+  \n\ 2.Swelling or inflammation around the MCP joints. The affected joints may appear puffy or feel warm to the touch. 
+  \n\ Yes | No"
+  utter_wrist_mcp_arthritis_types_ans:
+  - text: " \n\ 1.Thumb abduction strength exercise
+           \n\ 2.Opponens muscle strength exercise"
+
+  utter_hip_arthuritis_types:
+  - text: " \n\ These might be possible causes Hip arthuritis  
+  \n\ Difficult in turn the lower limb inward 
+  \n\ Are you facing any of the following issues: 
+  \n\ Pain in or near the hip joint, stiffness, audible clicking sounds when moving the hip, and weakness. 
+  \n\ Yes |No"
+  utter_ilioposal_tendonitis_types:
+  - text: " \n\ These might be possible causes ilioposal_tendonitis 
+  \n\ pain in anterior  thigh 
+  \n\ Are you facing any of the following issues: palpable and audible snap that occurs from flexion and extension of the hip. 
+  \n\ Persistent irritation of the tendon may lead to inflammation of the tendon, underlying bursa or both 
+  \n\ Yes | No"
+  utter_greater_trochantic_pain_types:
+  - text: " \n\ These might be possible causes greater_trochantic_pain 
+  \n\ pain in outer side of thigh 
+  \n\ Are you facing any of the following issues: Pain in the hip/thigh/buttock area. 
+  \n\ Worse pain when lying on your side or with direct pressure. 
+  \n\ Pain increasing with exercise such as periods of walking, standing or running. Tenderness to touch 
+  \n\ Yes |No"
+  utter_hamstring_strain_types:
+  - text: " \n\ These might be possible causes hamstring_strain  
+  \n\ pain in back of thigh 
+  \n\ Are you facing any of the following issues:Mild hamstring strains (grade 1) will usually cause sudden pain and tenderness at the back of your thigh. 
+  \n\ It may be painful to move your leg, but the strength of the muscle should not be affected. 
+  \n\ Partial hamstring tears (grade 2) are usually more painful and tender. 
+  \n\ Yes | No"
+  utter_adductor_strain_types:
+  - text: " \n\ These might be possible causes adductor_strain  
+  \n\ pain in insde of thigh \n\ Are you facing any of the following issues: 
+  \n\ Pain on the inside of your thigh, pain when bringing your legs together, or pain when lifting your knee. 
+  \n\ There also could be a popping sensation at the inside of the thigh and limping could occur as well. 
+  \n\ You may also notice bruising and swelling 
+  \n\ Yes | No"
+
+  utter_hip_arthuritis_types_ans:
+  - text:  " \n\ 1.Quderceps strength ecentric   
+  \n\ 2.TFL streching  
+  \n\ 3.Hamstring  streching   
+  \n\ 4.Short  arc adductor streching "
+  utter_ilioposal_tendonitis_types_ans: 
+  - text: " \n\ 1.Hip internal rotation strength  
+  \n\ 2.Hip external rotation strength  
+  \n\ 3.Hip abduction strength "
+  utter_greater_trochantic_pain_types_ans:
+  - text: " \n\ 1.ITB streching "
+  utter_hamstring_strain_types_ans:
+  - text: " \n\ 1.Hamstring streching  
+  \n\ 2.Ecentric  throw ball "
+  utter_adductor_strain_types_ans:
+  - text: " \n\ 1.Adductor isometric exercise 
+  \n\ 2.Short  adductor  streching  
+  \n\ 3.Long adductor  streching  
+  \n\ 4. Side lying adductor  strength"
+
+
+  utter_knee_arthritis_types:
+  - text: " \n\ These might be possible causes knee_arthritis  
+  \n\ 1.pain inner side  of knee 
+  \n\ 2.Older age  
+  \n\ 3.grinding  sound  in knee 
+  \n\ Are you facing any of the following issues: 
+  \n\ Creaking, clicking, grinding or snapping noises (crepitus). 
+  \n\ Difficulty walking. Joint pain that changes (gets better or worse) depending on the weather 
+  \n\ Yes | No"
+  utter_patellofemoral_syndrome_types:
+  - text: " \n\ These might be possible causes patellofemoral_syndrome 
+  \n\ 1.pain in anterior  knee
+  \n\ 2.pain in stairs  climbing and decending  
+  \n\ Are you facing any of the following issues: 
+  \n\ Aching pain in the front of the knee. 
+  \n\ The following can increase the pain: Walking up or down stairs. Kneeling or squatting. 
+  \n\ Sitting with a bent knee for long periods of time 
+  \n\ Yes|No"
+  utter_patellar_tendonitis_types:
+  - text: " \n\ These might be possible causes patellar_tendonitis 
+  \n\ anterior  knee pain with activities  
+  \n\ Are you facing any of the following issues: Swelling. Pain with jumping, running, or walking. 
+  \n\ Pain when bending or straightening your leg. Tenderness behind the lower part of your kneecap.
+  \n\ Yes | No"
+  utter_knee_ligament_types:
+  - text: " \n\ These might be possible causes knee_ligament  
+  \n\ 1.leg twisting
+  \n\ 2.pain in inside of knee 
+  \n\ Are you facing any of the following issues: 
+  \n\ He person may hear a popping sound as the injury occurs, followed by the leg buckling when trying to stand on it, and swelling. 
+  \n\ Yes | No"
+  utter_meniscus_tear_types:
+  - text: " \n\ These might be possible causes meniscus_tear 
+  \n\  1.swelling  in knee
+  \n\ 2.knee twisting
+  \n\ 3.knee locking\n\ Are you facing any of the following issues:
+  \n\ Swelling or stiffness. Pain, especially when twisting or rotating your knee. 
+  \n\ Difficulty straightening your knee fully. Feeling as though your knee is locked in place when you try to move it 
+  \n\ Yes | No"
+  utter_iliotibial_band_syndrome_types: 
+  - text: " \n\ These might be possible causes iliotibial_band 
+  \n\ 1.pain in outer side of knee 
+  \n\ Are you facing any of the following issues: 
+  \n\ Pain on the outside of the knee. 
+  \n\ It might affect one or both of your knees. 
+  \n\ The pain is an aching, burning feeling that sometimes spreads up the thigh to the hip. 
+  \n\ You might notice this pain only when you exercise, especially while running 
+  \n\ Yes | No"
+
+  utter_knee_arthritis_types_ans:
+  - text: " 1.Wall slide  
+  \n\ 2.Quderceps  strength  exercise 
+  \n\ 3.Straight  leg rise "
+  utter_patellofemoral_syndrome_types_ans:
+  - text: " 1.Hamstring  streching  
+  \n\ 2.ITB  Streching 
+  \n\ 3.Hamstring  strength exercise  
+  \n\ 4.Quderceps strength  exercise "
+  utter_patellar_tendonitis_types_ans:
+  - text: " 1.Ecentric  quderceps  strength  
+  \n\ 2.Quderceps  strength  exercise"
+  utter_knee_ligament_types_ans:
+  - text: " 1.Quderceps  strength  exercise  
+  \n\ 2.Straight  leg rising  
+  \n\ 3.Hip adductor  streching "
+  utter_meniscus_tear_types_ans:
+  - text: " 1.Terminal  knee extension  exercise 
+  \n\ 2.Lateral  dips  
+  \n\ 3.Prolong  hangs     
+  \n\ 4.Balance  exercise 
+  \n\ 5.Chair  squats  "
+  utter_iliotibial_band_syndrome_types_ans:
+  - text: " \n\ 1.ITB streching  
+  \n\ 2.Pelvic  drop  
+  \n\ 3.Wall slide "
+
+  utter_lateral_ankle_pain_types:
+  - text: " \n\ These might be possible causes lateral_ankle 
+  \n\ 1.foot twisting  inward  
+  \n\ Are you facing any of the following issues: 
+  \n\ It may feel like a constant, dull ache. 
+  \n\ Your ankle may feel weak and stiff. 
+  \n\ You may have trouble walking in high heels or on uneven surfaces. 
+  \n\ Your ankle may swell, and it may feel tender 
+  \n\ Yes|No"
+  utter_ankle_instability_types:
+  - text: " \n\ These might be possible causes ankle_instability 
+  \n\ 1.swelling  in ankle  
+  \n\ 2.ankle unstable  
+  \n\ Are you facing any of the following issues: A repeated turning of the ankle, especially on uneven surfaces or when participating in sports.
+  \n\ Persistent (chronic) discomfort and swelling. Pain or tenderness 
+  \n\ Yes |No"
+  utter_achilles_tendon_pain_types:
+  - text: " \n\ These might be possible causes achilles_tendon 
+  \n\ pain in back side of foot and leg
+  \n\ Are you facing any of the following issues: 
+  \n\ Pain above your heel, especially when you stretch your ankle or stand on your toes. 
+  \n\ It may be mild and get better or worse over time. 
+  \n\ If the tendon ruptures, the pain is instant and severe. 
+  \n\ The area may also feel tender, swollen, and stiff 
+  \n\ Yes|No"
+  utter_posterior_tibial_tendonitis_types: 
+  - text: " \n\ These might be possible causes posterior_tibial_tendonitis 
+  \n\ pain in inside of foot 
+  \n\ Are you facing any of the following issues: 
+  \n\ Swelling, tenderness and pain or weakness when moving your foot or ankle are early signs of PTTD 
+  \n\ Yes | No"
+  utter_plantar_facitis_types:
+  - text: " \n\ These might be possible causes plantar_facitis 
+  \n\  1.pain in morning 
+  \n\ 2.pain ease with walking 
+  \n\ Are you facing any of the following issues: Stabbing pain in the bottom of your foot near the heel. 
+  \n\ The pain is usually the worst with the first few steps after awakening, although it can also be triggered by long periods of standing or when you get up from sitting 
+  \n\ Yes |No"
+
+  utter_lateral_ankle_pain_types_ans:
+  - text: " \n\ 1.Ankle mobility  exercise  
+  \n\ 2.Ankle circule  exercise 
+  \n\ 3.Ankle dorsi flexion  strength  
+  \n\ 4.Exercise  single leg squats "
+  utter_ankle_instability_types_ans:
+  - text: " \n\ 1.Ankle dorsi  flexion  strength 
+  \n\ 2.Balance  training  
+  \n\ 3.Dynamic  hoping  
+  \n\ 4.Star exercise "
+  utter_achilles_tendon_pain_types_ans:
+  - text: " \n\ 1.Gastro streching exercise 
+  \n\ 2.Ecentric  heels  dropping  
+  \n\ 3.Balance  exercise  
+  \n\ 4.Soleud streching  exercise "
+  utter_posterior_tibial_tendonitis_types_ans:
+  - text: " \n\ 1.Towel assist  calf streching  exercise  
+  \n\ 2.Resisted  foot adductor  exercise  
+  \n\ 3.Balance  exercise 
+  \n\ 4.Single  leg squats "
+  utter_plantar_facitis_types_ans:
+  - text: " \n\ 1.Fasia streching  exercise  
+  \n\ 2.Tennis  ball massage 
+  \n\ 3.Short foot exercise "
+
+
+  utter_iamabot:
+  - text: "I am a bot, powered by Rasa."
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

@@ -1,0 +1,50 @@
+version: "3.1"
+
+rules:
+
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+- rule: Say 'I am a bot' anytime the user challenges
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot
+
+- rule: Handle user deny
+  steps:
+  - intent: deny
+  - action: utter_greet
+
+- rule: End Conversation
+  condition:
+  - active_loop: utter_did_that_help
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+# - rule: Handle Upper Limb Selection
+#   steps:
+#   - intent: select_upper_limb
+#   - action: utter_upper_limb
+
+# - rule: Handle Shoulder Selection
+#   steps:
+#   - intent: upper_limb_shoulder
+#   - action: utter_shoulder_related_pains
+
+# - rule: Handle Elbow Selection
+#   steps:
+#   - intent: upper_limb_shoulder
+#   - action: utter_elbow_related_pains
+
+# - rule: Handle Wrist Selection
+#   steps:
+#   - intent: upper_limb_shoulder
+#   - action: utter_wrist_related_pains
+
+# - rule: Handle Shoulder Instability Selection
+#   steps:
+#   - intent: shoulder_related_pains_instability
+#   - action: utter_shoulder_instability_types

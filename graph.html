@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Rasa Core Visualisation</title>
+    <script src="https://dagrejs.github.io/project/dagre-d3/latest/dagre-d3.min.js"></script>
+    <script src="https://dagrejs.github.io/project/dagre/latest/dagre.min.js"></script>
+    <script src="https://d3js.org/d3.v4.js"></script>
+    <script src="https://dagrejs.github.io/project/graphlib-dot/v0.6.3/graphlib-dot.js"></script>
+</head>
+<body>
+<div id="errormsg" style="color: #b00"></div>
+<svg>
+    <style id="graph-style">
+        .node.invisible > rect {
+            display: none;
+        }
+
+        .node.start > rect {
+            fill: #7f7;
+            rx: 30;
+            ry: 18;
+        }
+
+        .node.end > rect {
+            fill: #f77;
+            rx: 30;
+            ry: 18;
+        }
+
+        .node:not(.active) > rect, .node:not(.active) > .label {
+            opacity: 0.4;
+        }
+
+        .edgePath:not(.active) path {
+            opacity: 0.4;
+        }
+
+        .node.ellipsis > rect {
+            fill: #CCC;
+        }
+
+        .node.intent > rect {
+            fill: #7ff;
+        }
+
+        .node.dashed > rect {
+            stroke-dasharray: 5;
+        }
+
+        text {
+            font-weight: 300;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serf, serif;
+            font-size: 14px;
+            color: #1f1d1d;
+        }
+
+        .node rect {
+            stroke: #444;
+            fill: #fff;
+            stroke-width: 1.5px;
+        }
+
+        .edgePath path {
+            stroke: #333;
+            stroke-width: 1.5px;
+        }
+
+        svg {
+            position: fixed;
+            top: 10px;
+            left: 0;
+            height: 100%;
+            width: 100%
+        }
+    </style>
+    <g></g>
+</svg>
+<script>
+
+  function serveGraph() {
+    let oldInputGraphValue;
+
+    const url = 'visualization.dot';
+    const refreshInterval = 500;
+
+    // trigger a refresh by fetching an updated graph
+    setInterval(function () {
+      fetch(url).then(r => r.text()).then(dot => {
+        document.getElementById('errormsg').innerHTML = '';
+        if (oldInputGraphValue === dot) return;
+
+        oldInputGraphValue = dot;
+        drawGraph(dot);
+      }).catch(err => {
+        document.getElementById('errormsg').innerHTML =
+          'Failed to update plot. (' + err.message + ')';
+      });
+    }, refreshInterval);
+  }
+
+  function drawGraph(graph) {
+    let g = graphlibDot.read(graph);
+    // Set margins, if not present
+    if (!g.graph().hasOwnProperty("marginx") &&
+      !g.graph().hasOwnProperty("marginy")) {
+      g.graph().marginx = 20;
+      g.graph().marginy = 20;
+    }
+    g.graph().transition = function (selection) {
+      return selection.transition().duration(300);
+    };
+    // Render the graph into svg g
+    d3.select("svg g").call(render, g);
+  }
+  // Set up zoom support
+  const svg = d3.select("svg"),
+    inner = d3.select("svg g"),
+    zoom = d3.zoom().on("zoom", function () {
+      inner.attr("transform", d3.event.transform);
+    });
+  svg.call(zoom);
+
+  // Create and configure the renderer
+  const render = dagreD3.render();
+
+  let isClient = false;
+  isClient = true;
+
+  if (isClient) {
+    // Mark all nodes and their edges as active
+    cssRules = document.getElementById('graph-style').sheet.cssRules;
+    cssRules[3].style.opacity = 1;
+    cssRules[4].style.opacity = 1;
+
+    let graph;
+    graph = `digraph  {
+0 [class="start active", fillcolor=green, fontsize=12, label=START, style=filled];
+"-1" [class=end, fillcolor=red, fontsize=12, label=END, style=filled];
+1 [class="", fontsize=12, label=utter_upper_limb];
+2 [class="", fontsize=12, label=utter_shoulder_related_pains];
+3 [class="", fontsize=12, label=utter_shoulder_impingement_types];
+4 [class="", fontsize=12, label=utter_shoulder_impingement_types_ans];
+5 [class="", fontsize=12, label=utter_did_that_help];
+8 [class="", fontsize=12, label=utter_shoulder_rotator_cufftendonitis_types];
+9 [class="", fontsize=12, label=utter_shoulder_rotator_cufftendonitis_types_ans];
+12 [class="", fontsize=12, label=utter_elbow_related_pains];
+13 [class="", fontsize=12, label=utter_elbow_lateral_epicondylitis_types];
+14 [class="", fontsize=12, label=utter_elbow_lateral_epicondylitis_types_ans];
+18 [class="", fontsize=12, label=utter_elbow_medial_epicondyliti_types];
+19 [class="", fontsize=12, label=utter_elbow_medial_epicondyliti_types_ans];
+22 [class="", fontsize=12, label=utter_wrist_related_pains];
+23 [class="", fontsize=12, label=utter_wrist_dequervain_tenosynovitis_types];
+24 [class="", fontsize=12, label=utter_wrist_dequervain_tenosynovitis_types_ans];
+28 [class="", fontsize=12, label=utter_wrist_carpel_tunnel_types];
+29 [class="", fontsize=12, label=utter_wrist_carpel_tunnel_types_ans];
+33 [class="", fontsize=12, label=utter_wrist_mcp_arthritis_types];
+34 [class="", fontsize=12, label=utter_wrist_mcp_arthritis_types_ans];
+36 [class="", fontsize=12, label=utter_lower_limb];
+37 [class="", fontsize=12, label=utter_hip_related_pains];
+38 [class="", fontsize=12, label=utter_hip_arthuritis_types];
+39 [class="", fontsize=12, label=utter_hip_arthuritis_types_ans];
+43 [class="", fontsize=12, label=utter_ilioposal_tendonitis_types];
+44 [class="", fontsize=12, label=utter_ilioposal_tendonitis_types_ans];
+48 [class="", fontsize=12, label=utter_greater_trochantic_pain_types];
+49 [class="", fontsize=12, label=utter_greater_trochantic_pain_types_ans];
+53 [class="", fontsize=12, label=utter_hamstring_strain_types];
+54 [class="", fontsize=12, label=utter_hamstring_strain_types_ans];
+58 [class="", fontsize=12, label=utter_adductor_strain_types];
+59 [class="", fontsize=12, label=utter_adductor_strain_types_ans];
+62 [class="", fontsize=12, label=utter_knee_related_pains];
+63 [class="", fontsize=12, label=utter_knee_arthritis_types];
+64 [class="", fontsize=12, label=utter_knee_arthritis_types_ans];
+68 [class="", fontsize=12, label=utter_patellofemoral_syndrome_types];
+69 [class="", fontsize=12, label=utter_patellofemoral_syndrome_types_ans];
+73 [class="", fontsize=12, label=utter_patellar_tendonitis_types];
+74 [class="", fontsize=12, label=utter_patellar_tendonitis_types_ans];
+78 [class="", fontsize=12, label=utter_knee_ligament_types];
+79 [class="", fontsize=12, label=utter_knee_ligament_types_ans];
+83 [class="", fontsize=12, label=utter_meniscus_tear_types];
+84 [class="", fontsize=12, label=utter_meniscus_tear_types_ans];
+88 [class="", fontsize=12, label=utter_iliotibial_band_syndrome_types];
+89 [class="", fontsize=12, label=utter_iliotibial_band_syndrome_types_ans];
+92 [class="", fontsize=12, label=utter_ankle_related_pains];
+93 [class="", fontsize=12, label=utter_lateral_ankle_pain_types];
+94 [class="", fontsize=12, label=utter_lateral_ankle_pain_types_ans];
+98 [class="", fontsize=12, label=utter_ankle_instability_types];
+99 [class="", fontsize=12, label=utter_ankle_instability_types_ans];
+103 [class="", fontsize=12, label=utter_achilles_tendon_pain_types];
+104 [class="", fontsize=12, label=utter_achilles_tendon_pain_types_ans];
+108 [class="", fontsize=12, label=utter_posterior_tibial_tendonitis_types];
+109 [class="", fontsize=12, label=utter_posterior_tibial_tendonitis_types_ans];
+113 [class="", fontsize=12, label=utter_plantar_facitis_types];
+114 [class="", fontsize=12, label=utter_plantar_facitis_types_ans];
+116 [class="", fontsize=12, label=utter_greet];
+117 [class="", fontsize=12, label=utter_goodbye];
+120 [class="", fontsize=12, label=utter_shoulder_instability_types];
+121 [class="", fontsize=12, label=utter_shoulder_instability_types_ans];
+125 [class="", fontsize=12, label=utter_shoulder_adhesive_capsulitis_types];
+126 [class="", fontsize=12, label=utter_shoulder_adhesive_capsulitis_types_ans];
+130 [class="", fontsize=12, label=utter_shoulder_arthritis_types];
+131 [class="", fontsize=12, label=utter_shoulder_arthritis_types_ans];
+133 [class="", fontsize=12, label="..."];
+136 [class="", fontsize=12, label=utter_iamabot];
+141 [class=intent, fillcolor=lightblue, label=upper, shape=rect, style=filled];
+142 [class=intent, fillcolor=lightblue, label=lower, shape=rect, style=filled];
+143 [class=intent, fillcolor=lightblue, label=hey, shape=rect, style=filled];
+144 [class=intent, fillcolor=lightblue, label=sho, shape=rect, style=filled];
+145 [class=intent, fillcolor=lightblue, label=elbow, shape=rect, style=filled];
+146 [class=intent, fillcolor=lightblue, label=wr, shape=rect, style=filled];
+147 [class=intent, fillcolor=lightblue, label="Impinged shoulder joint", shape=rect, style=filled];
+148 [class=intent, fillcolor=lightblue, label="Rotator cuff tendonitis", shape=rect, style=filled];
+149 [class=intent, fillcolor=lightblue, label="instability in the shoulder joint", shape=rect, style=filled];
+150 [class=intent, fillcolor=lightblue, label="Shoulder capsule inflammation", shape=rect, style=filled];
+151 [class=intent, fillcolor=lightblue, label="shoulder arthritis", shape=rect, style=filled];
+152 [class=intent, fillcolor=lightblue, label=yaa, shape=rect, style=filled];
+153 [class=intent, fillcolor=lightblue, label=definitely, shape=rect, style=filled];
+154 [class=intent, fillcolor=lightblue, label="Elbow lateral epicondylitis", shape=rect, style=filled];
+155 [class=intent, fillcolor=lightblue, label="Medial epicondyle tendinopathy", shape=rect, style=filled];
+156 [class=intent, fillcolor=lightblue, label=ok, shape=rect, style=filled];
+157 [class=intent, fillcolor=lightblue, label=definitely, shape=rect, style=filled];
+158 [class=intent, fillcolor=lightblue, label=deque, shape=rect, style=filled];
+159 [class=intent, fillcolor=lightblue, label="Wrist carpal tunnel syndrome", shape=rect, style=filled];
+160 [class=intent, fillcolor=lightblue, label="MCP joint osteoarthritis", shape=rect, style=filled];
+161 [class=intent, fillcolor=lightblue, label=right, shape=rect, style=filled];
+162 [class=intent, fillcolor=lightblue, label=definitely, shape=rect, style=filled];
+163 [class=intent, fillcolor=lightblue, label=yeah, shape=rect, style=filled];
+164 [class=intent, fillcolor=lightblue, label="hip joint", shape=rect, style=filled];
+165 [class=intent, fillcolor=lightblue, label=kne, shape=rect, style=filled];
+166 [class=intent, fillcolor=lightblue, label=ank, shape=rect, style=filled];
+167 [class=intent, fillcolor=lightblue, label="arthritis in the hip", shape=rect, style=filled];
+168 [class=intent, fillcolor=lightblue, label="tendonitis in the hip", shape=rect, style=filled];
+169 [class=intent, fillcolor=lightblue, label="greater trochanteric pain", shape=rect, style=filled];
+170 [class=intent, fillcolor=lightblue, label="strained hamstring", shape=rect, style=filled];
+171 [class=intent, fillcolor=lightblue, label="adductor strain", shape=rect, style=filled];
+172 [class=intent, fillcolor=lightblue, label=okay, shape=rect, style=filled];
+173 [class=intent, fillcolor=lightblue, label=yes, shape=rect, style=filled];
+174 [class=intent, fillcolor=lightblue, label="of course", shape=rect, style=filled];
+175 [class=intent, fillcolor=lightblue, label=indeed, shape=rect, style=filled];
+176 [class=intent, fillcolor=lightblue, label=right, shape=rect, style=filled];
+177 [class=intent, fillcolor=lightblue, label="knee arthritis", shape=rect, style=filled];
+178 [class=intent, fillcolor=lightblue, label=pate, shape=rect, style=filled];
+179 [class=intent, fillcolor=lightblue, label="tendonitis in the knee", shape=rect, style=filled];
+180 [class=intent, fillcolor=lightblue, label="medial collateral ligament (MCL) injury", shape=rect, style=filled];
+181 [class=intent, fillcolor=lightblue, label="torn meniscus", shape=rect, style=filled];
+182 [class=intent, fillcolor=lightblue, label=illio, shape=rect, style=filled];
+183 [class=intent, fillcolor=lightblue, label="of course", shape=rect, style=filled];
+184 [class=intent, fillcolor=lightblue, label=indeed, shape=rect, style=filled];
+185 [class=intent, fillcolor=lightblue, label=correct, shape=rect, style=filled];
+186 [class=intent, fillcolor=lightblue, label=right, shape=rect, style=filled];
+187 [class=intent, fillcolor=lightblue, label=sure, shape=rect, style=filled];
+188 [class=intent, fillcolor=lightblue, label=yeah, shape=rect, style=filled];
+189 [class=intent, fillcolor=lightblue, label="ankle ligament injury", shape=rect, style=filled];
+190 [class=intent, fillcolor=lightblue, label="ankle instability", shape=rect, style=filled];
+191 [class=intent, fillcolor=lightblue, label="tendon pain in the ankle", shape=rect, style=filled];
+192 [class=intent, fillcolor=lightblue, label="posterior tibial tendonitis", shape=rect, style=filled];
+193 [class=intent, fillcolor=lightblue, label="pain in the arch of the foot", shape=rect, style=filled];
+194 [class=intent, fillcolor=lightblue, label=ok, shape=rect, style=filled];
+195 [class=intent, fillcolor=lightblue, label=sure, shape=rect, style=filled];
+196 [class=intent, fillcolor=lightblue, label="of course", shape=rect, style=filled];
+197 [class=intent, fillcolor=lightblue, label=ok, shape=rect, style=filled];
+198 [class=intent, fillcolor=lightblue, label=sure, shape=rect, style=filled];
+199 [class=intent, fillcolor=lightblue, label=indeed, shape=rect, style=filled];
+200 [class=intent, fillcolor=lightblue, label=correct, shape=rect, style=filled];
+201 [class=intent, fillcolor=lightblue, label=yess, shape=rect, style=filled];
+202 [class=intent, fillcolor=lightblue, label="see you", shape=rect, style=filled];
+203 [class=intent, fillcolor=lightblue, label="am I talking to a human?", shape=rect, style=filled];
+204 [class=intent, fillcolor=lightblue, label="I don't think so", shape=rect, style=filled];
+0 -> 117  [class="", key=NONE, label=""];
+0 -> 133  [class="", key=NONE, label=""];
+0 -> 141  [class="", key=0];
+0 -> 142  [class="", key=0];
+0 -> 143  [class="", key=0];
+1 -> 144  [class="", key=0];
+1 -> 145  [class="", key=0];
+1 -> 146  [class="", key=0];
+2 -> 147  [class="", key=0];
+2 -> 148  [class="", key=0];
+2 -> 149  [class="", key=0];
+2 -> 150  [class="", key=0];
+2 -> 151  [class="", key=0];
+3 -> 152  [class="", key=0];
+4 -> 5  [class="", key=NONE, label=""];
+5 -> "-1"  [class="", key=NONE, label=""];
+8 -> 153  [class="", key=0];
+9 -> 5  [class="", key=NONE, label=""];
+12 -> 154  [class="", key=0];
+12 -> 155  [class="", key=0];
+13 -> 156  [class="", key=0];
+14 -> 5  [class="", key=NONE, label=""];
+18 -> 157  [class="", key=0];
+19 -> 5  [class="", key=NONE, label=""];
+22 -> 158  [class="", key=0];
+22 -> 159  [class="", key=0];
+22 -> 160  [class="", key=0];
+23 -> 161  [class="", key=0];
+24 -> 5  [class="", key=NONE, label=""];
+28 -> 162  [class="", key=0];
+29 -> 5  [class="", key=NONE, label=""];
+33 -> 163  [class="", key=0];
+34 -> 5  [class="", key=NONE, label=""];
+36 -> 164  [class="", key=0];
+36 -> 165  [class="", key=0];
+36 -> 166  [class="", key=0];
+37 -> 167  [class="", key=0];
+37 -> 168  [class="", key=0];
+37 -> 169  [class="", key=0];
+37 -> 170  [class="", key=0];
+37 -> 171  [class="", key=0];
+38 -> 172  [class="", key=0];
+39 -> 5  [class="", key=NONE, label=""];
+43 -> 173  [class="", key=0];
+44 -> 5  [class="", key=NONE, label=""];
+48 -> 174  [class="", key=0];
+49 -> 5  [class="", key=NONE, label=""];
+53 -> 175  [class="", key=0];
+54 -> 5  [class="", key=NONE, label=""];
+58 -> 176  [class="", key=0];
+59 -> 5  [class="", key=NONE, label=""];
+62 -> 177  [class="", key=0];
+62 -> 178  [class="", key=0];
+62 -> 179  [class="", key=0];
+62 -> 180  [class="", key=0];
+62 -> 181  [class="", key=0];
+62 -> 182  [class="", key=0];
+63 -> 183  [class="", key=0];
+64 -> 5  [class="", key=NONE, label=""];
+68 -> 184  [class="", key=0];
+69 -> 5  [class="", key=NONE, label=""];
+73 -> 185  [class="", key=0];
+74 -> 5  [class="", key=NONE, label=""];
+78 -> 186  [class="", key=0];
+79 -> 5  [class="", key=NONE, label=""];
+83 -> 187  [class="", key=0];
+84 -> 5  [class="", key=NONE, label=""];
+88 -> 188  [class="", key=0];
+89 -> 5  [class="", key=NONE, label=""];
+92 -> 189  [class="", key=0];
+92 -> 190  [class="", key=0];
+92 -> 191  [class="", key=0];
+92 -> 192  [class="", key=0];
+92 -> 193  [class="", key=0];
+93 -> 194  [class="", key=0];
+94 -> 5  [class="", key=NONE, label=""];
+98 -> 195  [class="", key=0];
+99 -> 5  [class="", key=NONE, label=""];
+103 -> 196  [class="", key=0];
+104 -> 5  [class="", key=NONE, label=""];
+108 -> 197  [class="", key=0];
+109 -> 5  [class="", key=NONE, label=""];
+113 -> 198  [class="", key=0];
+114 -> 5  [class="", key=NONE, label=""];
+116 -> "-1"  [class="", key=NONE, label=""];
+117 -> "-1"  [class="", key=NONE, label=""];
+120 -> 199  [class="", key=0];
+121 -> 5  [class="", key=NONE, label=""];
+125 -> 200  [class="", key=0];
+126 -> 5  [class="", key=NONE, label=""];
+130 -> 201  [class="", key=0];
+131 -> 5  [class="", key=NONE, label=""];
+133 -> 202  [class="", key=0];
+133 -> 203  [class="", key=0];
+133 -> 204  [class="", key=0];
+136 -> "-1"  [class="", key=NONE, label=""];
+141 -> 1  [class="", key=0];
+142 -> 36  [class="", key=0];
+143 -> 116  [class="", key=0];
+144 -> 2  [class="", key=0];
+145 -> 12  [class="", key=0];
+146 -> 22  [class="", key=0];
+147 -> 3  [class="", key=0];
+148 -> 8  [class="", key=0];
+149 -> 120  [class="", key=0];
+150 -> 125  [class="", key=0];
+151 -> 130  [class="", key=0];
+152 -> 4  [class="", key=0];
+153 -> 9  [class="", key=0];
+154 -> 13  [class="", key=0];
+155 -> 18  [class="", key=0];
+156 -> 14  [class="", key=0];
+157 -> 19  [class="", key=0];
+158 -> 23  [class="", key=0];
+159 -> 28  [class="", key=0];
+160 -> 33  [class="", key=0];
+161 -> 24  [class="", key=0];
+162 -> 29  [class="", key=0];
+163 -> 34  [class="", key=0];
+164 -> 37  [class="", key=0];
+165 -> 62  [class="", key=0];
+166 -> 92  [class="", key=0];
+167 -> 38  [class="", key=0];
+168 -> 43  [class="", key=0];
+169 -> 48  [class="", key=0];
+170 -> 53  [class="", key=0];
+171 -> 58  [class="", key=0];
+172 -> 39  [class="", key=0];
+173 -> 44  [class="", key=0];
+174 -> 49  [class="", key=0];
+175 -> 54  [class="", key=0];
+176 -> 59  [class="", key=0];
+177 -> 63  [class="", key=0];
+178 -> 68  [class="", key=0];
+179 -> 73  [class="", key=0];
+180 -> 78  [class="", key=0];
+181 -> 83  [class="", key=0];
+182 -> 88  [class="", key=0];
+183 -> 64  [class="", key=0];
+184 -> 69  [class="", key=0];
+185 -> 74  [class="", key=0];
+186 -> 79  [class="", key=0];
+187 -> 84  [class="", key=0];
+188 -> 89  [class="", key=0];
+189 -> 93  [class="", key=0];
+190 -> 98  [class="", key=0];
+191 -> 103  [class="", key=0];
+192 -> 108  [class="", key=0];
+193 -> 113  [class="", key=0];
+194 -> 94  [class="", key=0];
+195 -> 99  [class="", key=0];
+196 -> 104  [class="", key=0];
+197 -> 109  [class="", key=0];
+198 -> 114  [class="", key=0];
+199 -> 121  [class="", key=0];
+200 -> 126  [class="", key=0];
+201 -> 131  [class="", key=0];
+202 -> 117  [class="", key=0];
+203 -> 136  [class="", key=0];
+204 -> 116  [class="", key=0];
+}
+`;
+    drawGraph(graph);
+  } else {
+    serveGraph();
+  }
+
+
+</script>
+</body>
+</html>
