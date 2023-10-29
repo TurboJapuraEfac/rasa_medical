@@ -67,6 +67,10 @@ nlu:
     - s
     - shoulder
     - sho
+    - sh
+    - shou
+    - should
+    - shoulde
 
 - intent: upper_limb_elbow
   examples: |
